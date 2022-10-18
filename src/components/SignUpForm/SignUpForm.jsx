@@ -55,7 +55,7 @@ export default class signup extends Component {
     const disable = (this.state.password !== this.state.confirm) || (this.state.password < 3);
 
     return (
-      <form className="pt-8" autoComplete="off" onSubmit={this.handleSubmit}>
+      <form className="pt-8 sign-up-form" autoComplete="off" onSubmit={this.handleSubmit}>
         <div className='col-span-full mb-10'>
           <h1 className='text-5xl font-bold mb-4'>Welcome!</h1>
           <p className='col-span-full'>Connect with guides and learn about grant opportunities</p>
