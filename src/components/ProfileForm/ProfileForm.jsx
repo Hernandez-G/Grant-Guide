@@ -4,7 +4,7 @@ import "./ProfileForm.css"
 import * as usersApi from "../../utilities/users-api"
 
 
-function ProfileForm({user}) {
+function ProfileForm({ user }) {
     const [userUpdate, setUserUpdate] = useState({
         firstName: user && user.firstName ? user.firstName : '',
         lastName: user && user.lastName ? user.lastName : '',
@@ -19,7 +19,8 @@ function ProfileForm({user}) {
     });
 
     const[submitting, setSubmitting] = useState(false);
-     async function handleSubmit(evt) {
+
+    async function handleSubmit(evt) {
          evt.preventDefault();
          // alert('form');
          setSubmitting(true);
@@ -33,77 +34,59 @@ function ProfileForm({user}) {
 
     console.log(userUpdate);
     
-    
     function handlechange(evt) {
         setUserUpdate({...userUpdate, [evt.target.name]: evt.target.value, 
         });
 
     }
 
-console.log(userUpdate);
-        
+    const inputs = [
+        { name: 'firstName', id: "floating_first_name", value: userUpdate.firstName, text: 'First name' },
+        { name: 'lastName', id: "floating_last_name", value: userUpdate.lastName, text: 'Last name' },
+        { name: 'email', id: "floating_email", value: userUpdate.email, text: 'Email' },
+        { name: 'role', id: "floating_role", value: userUpdate.role, text: 'Role' },
+        { name: 'organization', id: "floating_organization", value: userUpdate.organization, text: 'Organization' },
+        { name: 'location', id: "floating_location", value: userUpdate.location, text: 'Location' },
+        { name: 'about', id: "floating_about", value: userUpdate.about, text: 'About Me' },
+        { name: 'experience', id: "floating_experience", value: userUpdate.experience, text: 'experience' },
+        { name: 'jobDescription', id: "floating_jobDescription", value: userUpdate.jobDescription, text: 'Job Description' },
+        // { name: 'img', id: "floating_img", value: userUpdate.img, text: 'Photo URL' },
+    ]
+
+    const inputMap = inputs.map(input => {
+        const { name, id, value, text } = input
+        return (
+            <div className="relative z-0 mb-6 w-full group">
+                <input type="text" name={ name } id={ id } className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value={ value }  onChange={ handlechange } placeholder=" "  />
+                <label htmlFor={ id } className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">{ text }</label>
+            </div>
+        )
+    })
+
     return(
         <>
-        <label className='welcome'>Edit Profile</label>
-
-
-   <form onSubmit={handlechange}>
-        <div class="grid md:grid-cols-2 md:gap-6 m-9">
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="firstName" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.firstName}  onChange={handlechange} placeholder=" "  />
-                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="lastName" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.lastName} onChange={handlechange} placeholder=" "  />
-                <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.email} onChange={handlechange} placeholder=" "  />
-                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="role" id="floating_role" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.role} onChange={handlechange} placeholder=" "  />
-                <label for="floating_role" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Role</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="organization" id="floating_organization" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.organization} onChange={handlechange} placeholder=" "  />
-                <label for="floating_organization" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Organization</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="location" id="floating_location" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.location} onChange={handlechange} placeholder=" "  />
-                <label for="floating_location" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Location</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="about" id="floating_about" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.about} onChange={handlechange} placeholder=" "  />
-                <label for="floating_about" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">About Me</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="experience" id="floating_experience" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.experience} onChange={handlechange} placeholder=" "  />
-                <label for="floating_experience" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Experience</label>
-            </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="jobDescrption" id="floating_jobDescrption" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value= {userUpdate.jobDescription} onChange={handlechange} placeholder=" "  />
-                <label for="floating_jobDescrption" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Job Description</label>
-            </div>
-            <button 
-            href="/profile"
-            id="save-btn"
-            type="submit" 
-            onSubmit={handlechange} 
-            // onChange={(e)=>{setUserUpdate(e.target.value)}}
-            class="bg-transparent hover:bg-emerald-700 text-emerald-900 font-semibold hover:text-white py-2 px-4 border border-stone-700 hover:border-transparent rounded">
-             
-              Save 
-             </button>
-            </div>
-
-             </form>
-            
-        
+            <label className='welcome'>Edit Profile</label>
+            <form onSubmit={ handleSubmit }>
+                <div className="grid md:grid-cols-2 md:gap-6 m-9">
+                    { inputMap }
+                    {/* <div class="relative z-0 mb-6 w-full group">
+                <input type="url" name='img' id="floating_img" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  value={ userUpdate.img }  onChange={ handlechange } placeholder=" "  />
+                <label for="floating_img" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-50 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">'Photo URL'</label>
+            </div> */}
+                    <button 
+                        href="/profile"
+                        id="save-btn"
+                        type="submit" 
+                        onSubmit={handlechange} 
+                        // onChange={(e)=>{setUserUpdate(e.target.value)}}
+                        className="bg-transparent hover:bg-emerald-700 text-emerald-900 font-semibold hover:text-white py-2 px-4 border border-stone-700 hover:border-transparent rounded">
+                        Save 
+                    </button>
+                </div>
+            </form>
         </>
-
-            )
-        }
+    )
+}
         export default ProfileForm;
         // <div className="wrapper">
         //     <h1 className='welcome'>Edit Profile</h1>

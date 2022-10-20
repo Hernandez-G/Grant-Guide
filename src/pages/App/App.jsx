@@ -50,7 +50,7 @@ export default function App() {
                 <Route path="/profile" element={<ProfilePage user={user} guides={guides} />} />
                 <Route path="/grants" element={<GrantsPage user={user} grants={grants} grantsCopy={grantsCopy} setGrantsCopy={setGrantsCopy} setGrants={setGrants} />} />
                 <Route path='/grants/:grantId' element={<GrantDetailPage user={user} grants={grants} grantsCopy={grantsCopy} setGrantsCopy={setGrantsCopy} setGrants={setGrants} />} />
-                <Route path="/editprofile" element={<EditProfile />} />
+                <Route path="/editprofile" element={<EditProfile user={user} />} />
                 <Route path="/chat" element={<Chat user={user} grants={grants} />} />
                 <Route path="/faq" element={<FaqPage />} />
                 <Route path="/aboutus" element={<AboutUsPage />} />

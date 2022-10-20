@@ -3,19 +3,27 @@
   font-size: 50px;
 }
 
-.message {
-  font-size: 25px;
+.statement, .message {
+  /* Subheading1/Regular */
   margin-bottom: 35px;
   margin-top: 10px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
 }
 
-.statement {
-  color: black;
-  font-size: 25px;
+.about-container {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 6%;
 }
 
 #MTT {
-  margin-top: 30px;
+  /* margin-top: 65px; */
+  margin-bottom: 15px;
   /* Meet the team! */
   width: 732px;
   height: 68px;
@@ -33,3 +41,14 @@
   /* Primary/700 */
   color: #0F382A;
 }
+
+/* .message {
+  font-size: 25px;
+  margin-bottom: 35px;
+  margin-top: 10px;
+}
+
+.statement {
+  color: black;
+  font-size: 25px;
+} */

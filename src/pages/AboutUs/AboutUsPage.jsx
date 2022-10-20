@@ -8,11 +8,11 @@ export default function AboutUs() {
         const { name, img, title, resume, linkedIn } = person
         return (
             <div class="bg-white rounded-lg shadow-lg">
-                 <img src={ img } alt={ name } class="rounded-t-lg" />
+                <img src={ img } alt={ name } class="rounded-t-lg w-full"/>
                 <div class="p-6">
-                    <div className='card-content' class='flex-col justify-between'>
+                    <div class='flex-col justify-between'>
                         <div className='card-top'>
-                            <h2 class="font-bold mb-2 text-2xl text-purple-800">{ name }</h2>
+                            <h2 class="font-bold mb-2 text-2xl text-purple-800 flex-auto">{ name }</h2>
                             <p class="text-purple-700 mb-2">{ title }</p>
                         </div>
                         
@@ -40,7 +40,7 @@ export default function AboutUs() {
         const { name, img, title } = person
         return (
             <div class="bg-white rounded-lg shadow-lg">
-                <img src={ img } alt={ name } class="rounded-t-lg" />
+                <img src={ img } alt={ name } class="rounded-t-lg w-full" />
                 <div class="p-6">
                     <h2 class="font-bold mb-2 text-2xl text-purple-800">{ name }</h2>
                     <p class="text-purple-700 mb-2">{ title }</p>
@@ -56,7 +56,7 @@ export default function AboutUs() {
     })
 
     return (
-        <>
+        <div className='about-container'>
             <h1 id='MTT' className="MTT" class="text-5xl mb-9 font-bold text-center">Meet the team!</h1>
             <h4 className='problem'>The Problem</h4>
             <p className='statement'>Finding and applying to grants is an extremely complicated and overwhelming process, especially for new applicants. Grant applicants need a centralized way to find available grants as well as someone to talk to in regards to their needs for environmental remediation projects.</p>
@@ -77,7 +77,7 @@ export default function AboutUs() {
                 { analystsMap }
             </div>
 
-            <h1 className='thanks' >Thank You</h1>
+            <h1 id='MTT' className='thanks' >Thank You</h1>
             <h2 className='message'>A special thank you to The Opportunity Project 2022, General Assembly, and the US Census Bureau for creating this chance for us to showcase our skills. We made a product that we are proud of that we believe will help people interested in applying for environmental remediation grants.</h2>
 
             <h1 className='general'>General Assembly</h1>
@@ -102,6 +102,6 @@ export default function AboutUs() {
 
             {/* </div> */}
             {/* </div> */}
-        </>
+        </div>
     )
 }

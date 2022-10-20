@@ -1,12 +1,12 @@
 import ProfileForm from "../../components/ProfileForm/ProfileForm";
 import "./EditProfile.css"
 
-export default function EditProfile(){
+export default function EditProfile({ user }){
     
     return(
         <>
 
-        <ProfileForm />
+        <ProfileForm user={ user } />
         </>
 
     )
