@@ -64,3 +64,12 @@ p.error-message{
     color: black;
     margin: 0;
 } */
+
+.sign-up-form .col-span-full p{
+    color: rgb(126, 126, 126);
+}
+
+.sign-up-form button {
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+}

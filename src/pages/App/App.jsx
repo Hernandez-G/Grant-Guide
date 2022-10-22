@@ -57,7 +57,8 @@ export default function App() {
                 <Route path="/findguide" element={<FindGuide user={user} guides={guides} />} />
                 <Route path="/home" element={<Dashboard user={user} grants={grants} grantsCopy={grantsCopy} setGrantsCopy={setGrantsCopy} setGrants={setGrants} />} />
                 <Route path="/guideprofile" element={<GuideProfile user={user} guides={guides} />} />
-                <Route path='/*' element={<Navigate to={'/home'} />} />
+                <Route path='/' element={<Navigate to={'/grants'} />} />
+                <Route path='/*' element={<Navigate to={'/grants'} />} />
               </Routes>
             </div>
           </>
