@@ -40,26 +40,32 @@ export default function LoginForm({ setUser }) {
   <div id="wrap1">
     <div className="form-container">
       <h1 className='welcome'>Welcome Back!</h1>
-      <p>Say something nice here, and probably this long should be good.</p>
-          <form id="form" autoComplete="off" onSubmit={handleSubmit}>
+      <p>Connect with guides and learn about grant opportunities</p>
+          <form id="form" className="signForm" autoComplete="off" onSubmit={handleSubmit}>
             <label className='login'>Email</label>
-            <input type="text" name="email" placeholder="Email" value={credentials.email} onChange={handleChange} required />
+            <input type="text" name="email" placeholder="" value={credentials.email} onChange={handleChange} required />
             <label className='login'>Password</label>
-            <input type="password" name="password" placeholder="Password" value={credentials.password} onChange={handleChange} required />
-            <h4 className='forgot'><a href="#">Forgot Password?</a></h4>
+            <input type="password" name="password" placeholder="" value={credentials.password} onChange={handleChange} required />
             <br></br>
+            <h4 className='forgot'><a href="#" className="forgPass">Forgot Password?</a></h4>
             <button className='login-btn' type="submit">LOG IN</button>
-
+            <hr
+                style={{
+                background: 'rgb(126, 126, 126)',
+                height: '2px',
+              }}
+            />
+            <br></br>
+            <h1 className='option'>Dont have an account? &nbsp;<a href='/signup' className="underline">Sign Up</a></h1>
             <p className="error-message">&nbsp;{error}</p>
-      <h1 className='option'>Dont have an account? &nbsp;<a href='/signup' class="underline">Sign Up</a></h1>
           </form>
-  </div>
+    </div>
 
-</div>
+  </div>
     <div className='random'>
 
     </div>
-</div>
+  </div>
 
   </>
 )};
